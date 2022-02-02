@@ -5,7 +5,7 @@ from dns import resolver
 def checkDomain(domain: str):
     res = resolver.Resolver()
     res.nameservers = ['1.1.1.1']
-    answers = res.query(domain)
+    answers = res.resolve(domain)
     for rdata in answers:
         return(rdata.address)
 
