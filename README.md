@@ -3,7 +3,16 @@
 因爲neko的国内域名全部被DNS污染，现只提供IP，可以使用本項目配合cron檢測域名是否指向最新IP並更新最新的IP
 
 # 使用方法
-編輯`neko-ddns.py`:
+1. 安裝依賴
+
+`pip3 install requests dnspython`
+
+2. 編輯`neko-ddns.py`:
+```
+res.nameservers = ['1.1.1.1']
+```
+指定DNS Resolver, 默認值爲`1.1.1.1`
+
 ```
 token = "<YOUR NEKO API TOKEN HERE>" 
 name  = "<需要檢測的線路名字>如<广港链路A>"
@@ -22,7 +31,7 @@ cf_zone_identifier = "" # Can be found in the "Overview" tab of your domain, 在
 cf_record_name = "" # Which record you want to be synced
 ```
 
-**定時執行**
+3. 定時執行
 
 使用`crontab -e`添加新規則即可
 `30 * * * * /path/to/neko-ddns.py`
