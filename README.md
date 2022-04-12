@@ -2,7 +2,14 @@
 
 因爲neko的国内域名全部被DNS污染，现只提供IP，可以使用本項目配合cron檢測域名是否指向最新IP並更新最新的IP
 
-# 使用方法
+# 使用方法（多域名）
+1. 安装依赖
+
+`pip3 install requets dnspython`
+
+2. 编辑`neko-ddns-multi.py`, 按格式將需要更新的域名寫入名爲`domains`的dictionary中,其餘与单域名一致
+
+# 使用方法 (单域名)
 1. 安裝依賴
 
 `pip3 install requests dnspython`
@@ -33,5 +40,5 @@ cf_record_name = "" # Which record you want to be synced
 
 3. 定時執行
 
-使用`crontab -e`添加新規則即可
-`30 * * * * /path/to/neko-ddns.py`
+使用`crontab -e`添加新規則即可, 请自行替换python路径
+`30 * * * * /usr/bin/python3 /path/to/neko-ddns.py`
